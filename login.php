@@ -39,9 +39,6 @@
         $identifiant = $_POST['identifiant'];
         $password = $_POST['password'];
         $submit = $_POST['submit'];
-        var_dump($submit);
-        var_dump($identifiant);
-        var_dump($password);
         if ($submit == "Connexion") {
             $sqlQuery = "SELECT * FROM compte ";
             $connectionStatement = $mysqlClient->prepare($sqlQuery);
@@ -59,8 +56,6 @@
                     // header("Location: config-admin.php");
                 }
             }
-            var_dump($connection);
-            var_dump($rows);
         }
         ?>
     </div>

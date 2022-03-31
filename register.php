@@ -25,34 +25,30 @@
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="margin-top:-20px;">
-            <div class="container"><a class="navbar-brand" style="color:#00b760;" href="#"><img style="width:100px;height:100px;" src="assets/img/logo_geek.jpg"><em>GeekZone</em></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Acceuil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Catégorie</a></li>
-                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Nos Boutiques</a>
-                            <div class="dropdown-menu"><a class="dropdown-item" href="nos-boutique1.html">Boutique 1</a><a class="dropdown-item" href="#">Boutique 2<br></a><a class="dropdown-item" href="#">Boutique 3<br></a></div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    </ul><span class="navbar-text actions"> <a class="login" href="login.html">Se connecter</a><a class="btn btn-light action-button" role="button" style="background-color:#00b760;" href="register.html">Inscription</a></span>
-                </div>
-            </div>
-        </nav>
-    </div>
+
+    <?php require('header.php'); ?>
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder"></div>
             <form method="post">
                 <h2 class="text-center">Modifier le mot de passe</h2>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                <div class="form-group"><input class="form-control" type="password" name="new-password" placeholder="new Password"></div>
-                <div class="form-group"><button class="btn btn-primary btn-block" style="background-color:#00b760;" type="submit">Modifier</button></div><a class="already" href="#">Vous avez déjà un compte ? Connectez-vous ici.</a>
+                <div class="form-group"><input class="form-control" type="text" name="identifiant" placeholder="Identifiant"></div>
+                <div class="form-group"><input class="form-control" type="password" name="new-password" placeholder="Nouveau mot de passe"></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" name="envoi" value="envoi" style="background-color:#00b760;" type="submit">Modifier</button></div>
             </form>
         </div>
     </div>
+    <?php
+    var_dump($_POST['envoi']);
+    $identifiant = $_POST['identifiant'];
+    $newmdp = $_POST['new-password'];
+    if ($_POST['envoi'] == "envoi" && $login['identifiant'] == $identifiant) {
+        $sqlQuery = "UPDATE compte SET password = $newmdp WHERE identifiant = '$identifiant'";
+        $loginStatement = $mysqlClient->prepare($sqlQuery);
+        $loginStatement->execute();
+        $login = $loginStatement->fetchAll();
+    }
+    ?>
     <div class="footer-dark" style="padding-top:20px;">
         <footer>
             <div class="container">
