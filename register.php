@@ -31,7 +31,7 @@
         <div class="form-container">
             <div class="image-holder"></div>
             <form method="post">
-                <h2 class="text-center">Modifier le mot de passe</h2>
+                <h2 class="text-center">Modifier le mot de passeeeeeeeeeeeeeeee</h2>
                 <div class="form-group"><input class="form-control" type="text" name="identifiant" placeholder="Identifiant"></div>
                 <div class="form-group"><input class="form-control" type="password" name="new-password" placeholder="Nouveau mot de passe"></div>
                 <div class="form-group"><button class="btn btn-primary btn-block" name="envoi" value="envoi" style="background-color:#00b760;" type="submit">Modifier</button></div>
